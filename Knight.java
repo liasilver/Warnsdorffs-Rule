@@ -51,23 +51,7 @@ public class Knight {
 		return this.loc.y();
 	}
 
-	/**
-	 * Set the x-coordinate of this location to the specified value.
-	 * 
-	 * @param x the x-coordinate to set
-	 */
-	public void x(int x) {
-		this.loc.x(x);
-	}
 
-	/**
-	 * Set the y-coordinate of this location to the specified value.
-	 * 
-	 * @param y the y-coordinate to set
-	 */
-	public void y(int y) {
-		this.loc.y(y);
-	}
 	
 	public Location getLoc() {
 		return this.loc;
@@ -76,8 +60,5 @@ public class Knight {
 	public void setLoc(Location loc) {
 		this.loc = loc;
 	}
-	
-	public String toString() {
-		return String.format("[%d][%d]", this.loc.x(), this.loc.y());
-	}
+
 }

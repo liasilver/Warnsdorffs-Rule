@@ -23,7 +23,7 @@ public class TourViewer {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				if ((i + j) % 2 == 0) {
-					StdDraw.setPenColor(StdDraw.BLUE);
+					StdDraw.setPenColor(StdDraw.PURPLE);
 				} else {
 					StdDraw.setPenColor(StdDraw.WHITE);
 				}
@@ -36,16 +36,27 @@ public class TourViewer {
 		// edit the next line to draw a board of the size that you are testing
 		drawBoard(8, 8);
 		
-		StdDraw.setPenColor(StdDraw.BLACK);
+		StdDraw.setPenColor(StdDraw.DARK_GRAY);
 		
+		int[][] offset = {
+			{-2,1},{-2,-1},
+			{1,2},{1,-2},
+			{2,1},{2,-1},
+			{-1,2},{-1,-2}
+		};
+		int bWidth = 8;
+		int bHeight = 8;
 		// create a Tour object on the next line
-		Tour t = new Tour();
-		
+		Tour t = new Tour(offset, bWidth, bHeight);
 		
 		// depending on the structure of your solution you may have to make
 		// some more objects here...
 		
 		Location start = new Location(3, 5);
+		
+		//set board dimensions
+		//set piece moves
+		
 		t.startTour(start);
 		Location curr = start;
 		int i = 0;
@@ -53,7 +64,9 @@ public class TourViewer {
 			Location next = t.next();
 			System.out.println(i + " : moving from " + curr + " to " + next);
 			StdDraw.line(curr.x(), curr.y(), next.x(), next.y());
+			StdDraw.setPenColor(StdDraw.DARK_PURPLE);
 			StdDraw.filledCircle(next.x(), next.y(), 0.1);
+			StdDraw.setPenColor(StdDraw.DARK_GRAY);
 			curr = new Location(next);
 			// uncomment the next line to slow down the viewer; 500 is the pause time in milliseconds
 			//Thread.sleep(500);

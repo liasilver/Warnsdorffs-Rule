@@ -8,25 +8,18 @@ public class Moves {
 
 	//a list of possible moves starting from location
 	
-	//move flexibilty
-	public Moves(Location from){
-		int[][] offset = {
-				{-2,1},{-2,-1},
-				{1,2},{1,-2},
-				{2,1},{2,-1},
-				{-1,2}, {-1,-2}
-		};
+	public Moves(Location from, int [][]offset, int boardWidth, int boardHeight){
 		for (int [] delta: offset) {
 			Location newLoc = new Location(from.x() + delta[0], from.y() + delta[1]);
-			if (isValid(newLoc)) {
+			if (isValid(newLoc, boardWidth,boardHeight)) {
 				this.moves.add(newLoc);	
 			}
 		}
 	}
 	
 	//board flexibility 
-	public static boolean isValid(Location loc) {
-		if(loc.x() < 1 || loc.x() > 8 || loc.y() < 1 || loc.y() > 8) {
+	public static boolean isValid(Location loc, int boardWidth, int boardHeight) {
+		if(loc.x() < 1 || loc.x() > boardWidth || loc.y() < 1 || loc.y() > boardHeight) {
 			return false;
 		}
 		return true;
